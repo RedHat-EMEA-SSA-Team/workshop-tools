@@ -5,14 +5,14 @@ ENV HOME=/home/developer
 RUN mkdir -p /projects ${HOME}
 
 ENV GLIBC_VERSION=2.30-r0 \
-    ODO_VERSION=v2.3.0 \
-    OC_VERSION=4.8 \
-    KUBECTL_VERSION=v1.20.6 \
-    TKN_VERSION=0.20.0 \
+    ODO_VERSION=v2.3.1 \
+    OC_VERSION=4.9 \
+    KUBECTL_VERSION=v1.22.3 \
+    TKN_VERSION=0.21.0 \
     MAVEN_VERSION=3.6.3 \
     JDK_VERSION=11 \
     YQ_VERSION=2.4.1 \
-    ARGOCD_VERSION=v2.1.5 \
+    ARGOCD_VERSION=v2.1.6 \
     IKE_VERSION=0.4.0 \
     JAVA_TOOL_OPTIONS="-Djava.net.preferIPv4Stack=true"
 
@@ -22,7 +22,7 @@ RUN microdnf install -y \
     echo "Installed Packages" && rpm -qa | sort -V && echo "End Of Installed Packages"
 
 # install oc
-RUN wget -qO- https://mirror.openshift.com/pub/openshift-v4/clients//ocp/stable-${OC_VERSION}/openshift-client-linux.tar.gz | tar xvz -C /usr/local/bin && \
+RUN wget -qO- https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable-${OC_VERSION}/openshift-client-linux.tar.gz | tar xvz -C /usr/local/bin && \
     oc version --client
 
 # install odo
