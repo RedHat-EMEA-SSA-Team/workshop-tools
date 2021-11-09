@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8-minimal:8.1-407
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.4-212
 
 ENV HOME=/home/developer
 
@@ -48,26 +48,26 @@ RUN wget -qO /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/
     chmod +x /usr/local/bin/argocd
 
 
-# install ike + telepresence
-# install telepresence
-ENV TELEPRESENCE_VERSION=0.109
-RUN git clone https://github.com/telepresenceio/telepresence.git && \
-    cd telepresence && git checkout ${TELEPRESENCE_VERSION} &&\
-    PREFIX=/usr/local ./install.sh && \
-    echo "Installed Telepresence"
+# # install ike + telepresence (Only need for the debugging workshop)
+# # install telepresence
+# ENV TELEPRESENCE_VERSION=0.109
+# RUN git clone https://github.com/telepresenceio/telepresence.git && \
+#     cd telepresence && git checkout ${TELEPRESENCE_VERSION} &&\
+#     PREFIX=/usr/local ./install.sh && \
+#     echo "Installed Telepresence"
 
-RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
-    microdnf install -y sshfs && \
-    rpm -e epel-release-7-14 && \
-    rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
-    microdnf install -y torsocks && \
-    rpm -e epel-release-8-13.el8 && \
-    microdnf clean all -y && \
-    echo "Installed Telepresence Dependencies"
+# RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
+#     microdnf install -y sshfs && \
+#     rpm -e epel-release-7-14 && \
+#     rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
+#     microdnf install -y torsocks && \
+#     rpm -e epel-release-8-13.el8 && \
+#     microdnf clean all -y && \
+#     echo "Installed Telepresence Dependencies"
 
-RUN curl -sL http://git.io/get-ike | bash -s  -- --version=v${IKE_VERSION} --dir=/usr/local/bin --name ike && \
-    echo "Installed istio-workspace" && \
-    ike version
+# RUN curl -sL http://git.io/get-ike | bash -s  -- --version=v${IKE_VERSION} --dir=/usr/local/bin --name ike && \
+#     echo "Installed istio-workspace" && \
+#     ike version
 
 # install maven
 ENV MAVEN_HOME /usr/lib/mvn
