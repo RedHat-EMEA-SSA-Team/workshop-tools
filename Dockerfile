@@ -85,6 +85,9 @@ ENV JAVA_HOME ${GRAALVM_HOME}
 ADD etc/before-start.sh ${HOME}/before-start.sh
 ADD etc/entrypoint.sh ${HOME}/entrypoint.sh
 
+# odo preference
+ADD .odo ${HOME}/.odo
+
 # Change permissions to let any arbitrary user
 RUN for f in "${HOME}" "/etc/passwd" "/projects"; do \
       echo "Changing permissions on ${f}" && chgrp -R 0 ${f} && \
