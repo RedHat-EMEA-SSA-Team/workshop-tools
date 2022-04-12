@@ -5,10 +5,10 @@ ENV HOME=/home/developer
 RUN mkdir -p /projects ${HOME}
 
 ENV GLIBC_VERSION=2.30-r0 \
-    ODO_VERSION=v2.3.1 \
-    OC_VERSION=4.9 \
-    KUBECTL_VERSION=v1.22.3 \
-    TKN_VERSION=0.21.0 \
+    ODO_VERSION=v2.5.0 \
+    OC_VERSION=4.10 \
+    KUBECTL_VERSION=v1.23.5 \
+    TKN_VERSION=0.22.0 \
     MAVEN_VERSION=3.6.3 \
     JDK_VERSION=11 \
     YQ_VERSION=2.4.1 \
@@ -26,7 +26,7 @@ RUN wget -qO- https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable-$
     oc version --client
 
 # install odo
-RUN wget -O /usr/local/bin/odo https://mirror.openshift.com/pub/openshift-v4/clients/odo/${ODO_VERSION}/odo-linux-amd64 && \
+RUN wget -qO /usr/local/bin/odo https://mirror.openshift.com/pub/openshift-v4/clients/odo/${ODO_VERSION}/odo-linux-amd64 && \
     chmod +x /usr/local/bin/odo && \
     odo version --client
 
@@ -36,7 +36,8 @@ RUN chmod +x /usr/local/bin/kubectl && \
     kubectl version --client
 
 # install tekton
-RUN wget -qO- https://github.com/tektoncd/cli/releases/download/v${TKN_VERSION}/tkn_${TKN_VERSION}_Linux_x86_64.tar.gz | tar xvz -C /usr/local/bin && \
+# added --no-same-owner to work around "Cannot change ownership to uid 0, gid 1000670000: Invalid argument" error
+RUN wget -qO- https://github.com/tektoncd/cli/releases/download/v${TKN_VERSION}/tkn_${TKN_VERSION}_Linux_x86_64.tar.gz | tar xvz -C /usr/local/bin --no-same-owner && \
     tkn version
 
 # install yq
