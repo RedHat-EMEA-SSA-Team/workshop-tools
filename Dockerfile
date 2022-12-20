@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi-minimal:8.4-212
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.7
 
 ENV HOME=/home/developer
 
@@ -6,13 +6,13 @@ RUN mkdir -p /projects ${HOME}
 
 ENV GLIBC_VERSION=2.30-r0 \
     ODO_VERSION=v2.5.0 \
-    OC_VERSION=4.10 \
+    OC_VERSION=4.11 \
     KUBECTL_VERSION=v1.23.5 \
-    TKN_VERSION=0.22.0 \
+    TKN_VERSION=0.26.1 \
     MAVEN_VERSION=3.6.3 \
     JDK_VERSION=11 \
     YQ_VERSION=2.4.1 \
-    ARGOCD_VERSION=v2.1.6 \
+    ARGOCD_VERSION=v2.5.4 \
     IKE_VERSION=0.4.0 \
     JAVA_TOOL_OPTIONS="-Djava.net.preferIPv4Stack=true"
 
