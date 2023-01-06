@@ -86,6 +86,9 @@ ENV JAVA_HOME ${GRAALVM_HOME}
 ADD etc/before-start.sh ${HOME}/before-start.sh
 ADD etc/entrypoint.sh ${HOME}/entrypoint.sh
 
+# Add default .bashrc file to avoid annoying file not found if bash is chosen as default shell rather than sh
+ADD etc/.bashrc ${HOME}/.bashrc
+
 # odo preference
 ADD .odo ${HOME}/.odo
 
