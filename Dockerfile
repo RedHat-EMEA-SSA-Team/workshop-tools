@@ -5,14 +5,14 @@ ENV HOME=/home/developer
 RUN mkdir -p /projects ${HOME}
 
 ENV GLIBC_VERSION=2.30-r0 \
-    ODO_VERSION=v2.5.0 \
-    OC_VERSION=4.11 \
-    KUBECTL_VERSION=v1.23.5 \
-    TKN_VERSION=0.26.1 \
+    ODO_VERSION=v3.0.0 \
+    OC_VERSION=4.13 \
+    KUBECTL_VERSION=v1.26.3 \
+    TKN_VERSION=0.30.1 \
     MAVEN_VERSION=3.6.3 \
     JDK_VERSION=11 \
     YQ_VERSION=2.4.1 \
-    ARGOCD_VERSION=v2.5.4 \
+    ARGOCD_VERSION=v2.7.4 \
     IKE_VERSION=0.4.0 \
     JAVA_TOOL_OPTIONS="-Djava.net.preferIPv4Stack=true"
 
